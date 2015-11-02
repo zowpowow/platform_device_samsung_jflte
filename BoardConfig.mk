@@ -130,10 +130,9 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := device/samsung/jflte/rootdir/etc/fstab.qcom
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/jflte/ril
+TARGET_USES_GPE_RIL := false
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
@@ -161,3 +160,10 @@ WIFI_BAND := 802_11_ABG
 WIFI_DRIVER_FW_PATH_AP := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/wifi/bcmdhd_sta.bin"
+
+# Releasetools
+ifneq ($(TARGET_USES_GPE_RIL), true)
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
+else
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools-alt
+endif
