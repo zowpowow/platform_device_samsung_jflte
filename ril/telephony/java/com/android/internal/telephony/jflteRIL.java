@@ -238,15 +238,12 @@ public class jflteRIL extends RIL implements CommandsInterface {
             dc.isMT = (0 != p.readInt());
             dc.als = p.readInt();
             voiceSettings = p.readInt();
-            if (isGSM){
-                p.readInt();
-            }
             dc.isVoice = (0 == voiceSettings) ? false : true;
-            dc.isVoicePrivacy = (0 != p.readInt());
+	    dc.isVoicePrivacy = (0 != p.readInt());
             if (isGSM) {
-                p.readInt();
-                p.readInt();
-                p.readString();
+                int type = p.readInt();
+                int domain = p.readInt();
+                String comma = p.readString();
             }
             dc.number = p.readString();
             int np = p.readInt();
