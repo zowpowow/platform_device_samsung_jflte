@@ -217,6 +217,11 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
+# Device specific applications
+PRODUCT_PACKAGES += \
+    SamsungServiceMode \
+    STweaks
+
 # Wifi
 PRODUCT_PACKAGES += \
     libnetcmdiface \
