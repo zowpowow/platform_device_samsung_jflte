@@ -216,6 +216,10 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
+# Stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 # Device specific applications
 PRODUCT_PACKAGES += \
     SamsungServiceMode \
