@@ -191,6 +191,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8960
 
+# Qualcomm
+PRODUCT_PACKAGES += \
+    libcnefeatureconfig
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
