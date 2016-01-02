@@ -3,4 +3,3 @@
 
 # cannot take spaces
 rild.libargs=-d /dev/smd0
-rild.libpath=/system/lib/libril-qc-qmi-1.so

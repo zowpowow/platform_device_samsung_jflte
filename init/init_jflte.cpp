@@ -178,6 +178,7 @@ void gsm_properties()
     property_set("telephony.lteOnGsmDevice", "1");
     property_set("ro.telephony.default_network", "9");
     property_set("ro.ril.device_family", "gsm");
+    property_set("rild.libpath", "/system/lib/libril-qc-qmi-1.so");
 }
 
 void cdma_properties(char cdma_sub[])
@@ -189,6 +190,7 @@ void cdma_properties(char cdma_sub[])
     property_set("persist.radio.snapshot_timer", "22");
     property_set("telephony.lteOnCdmaDevice", "1");
     property_set("ro.ril.device_family", "cdma");
+    property_set("rild.libpath", "/system/lib/libsec-ril.so");
 }
 
 void r970_properties()
