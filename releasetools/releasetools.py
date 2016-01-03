@@ -32,6 +32,11 @@ def FullOTA_CustomAsserts(info):
   info.script.AppendExtra('ifelse(is_substring("I9507", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /system/rild/gsm/* /system/"));')
   info.script.AppendExtra('ifelse(is_substring("I9508", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /system/rild/gsm/* /system/"));')
   info.script.AppendExtra('delete_recursive("/system/rild");')
+  info.script.AppendExtra('ifelse(is_substring("I337", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox rm /system/lib/libstlport.so /system/lib/libcnefeatureconfig.so"));')
+  info.script.AppendExtra('ifelse(is_substring("M919", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox rm /system/lib/libstlport.so /system/lib/libcnefeatureconfig.so"));')
+  info.script.AppendExtra('ifelse(is_substring("I9505", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox rm /system/lib/libstlport.so /system/lib/libcnefeatureconfig.so"));')
+  info.script.AppendExtra('ifelse(is_substring("I9507", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox rm /system/lib/libstlport.so /system/lib/libcnefeatureconfig.so"));')
+  info.script.AppendExtra('ifelse(is_substring("I9508", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox rm /system/lib/libstlport.so /system/lib/libcnefeatureconfig.so"));')
 
 def FullOTA_InstallEnd(info):
   info.script.script = [cmd for cmd in info.script.script if not "boot.img" in cmd]
