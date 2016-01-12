@@ -66,7 +66,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
     private Object mSMSLock = new Object();
     private boolean mIsSendingSMS = false;
     protected boolean isGSM = false;
-    private static final int RIL_REQUEST_DIAL_EMERGENCY = 10001;
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
 
     public jflteRIL(Context context, int networkModes, int cdmaSubscription) {
@@ -555,10 +554,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
     @Override
     public void
     dial(String address, int clirMode, UUSInfo uusInfo, Message result) {
-        if (PhoneNumberUtils.isEmergencyNumber(address)) {
-            dialEmergencyCall(address, clirMode, result);
-            return;
-        }
         RILRequest rr = RILRequest.obtain(RIL_REQUEST_DIAL, result);
 
         rr.mParcel.writeString(address);
@@ -625,21 +620,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
                 result.sendToTarget();
             }
         }
-    }
-
-   private void
-    dialEmergencyCall(String address, int clirMode, Message result) {
-        RILRequest rr;
-        Rlog.v(RILJ_LOG_TAG, "Emergency dial: " + address);
-
-        rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY, result);
-        rr.mParcel.writeString(address + "/");
-        rr.mParcel.writeInt(clirMode);
-        rr.mParcel.writeInt(0);  // UUS information is absent
-
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-
-        send(rr);
     }
 
     // This call causes ril to crash the socket, stopping further communication
