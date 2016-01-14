@@ -68,6 +68,10 @@ public class jflteRIL extends RIL implements CommandsInterface {
     protected boolean isGSM = false;
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
 
+    private static final int RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED = 1037;
+    private static final int RIL_UNSOL_AM = 11010;
+    private static final int RIL_UNSOL_ON_SS = 11055;
+
     public jflteRIL(Context context, int preferredNetworkType, int cdmaSubscription) {
         this(context, preferredNetworkType, cdmaSubscription, null);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
@@ -313,7 +317,7 @@ public class jflteRIL extends RIL implements CommandsInterface {
                 notifyRegistrantsRilConnectionChanged(((int[])ret)[0]);
                 break;
             // SAMSUNG STATES
-            case 11010: // RIL_UNSOL_AM:
+            case RIL_UNSOL_AM:
                 ret = responseString(p);
                 String amString = (String) ret;
                 Rlog.d(RILJ_LOG_TAG, "Executing AM: " + amString);
@@ -325,10 +329,10 @@ public class jflteRIL extends RIL implements CommandsInterface {
                     Rlog.e(RILJ_LOG_TAG, "am " + amString + " could not be executed.");
                 }
                 break;
-            case 1036:
+            case RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED:
                 ret = responseVoid(p);
                 break;
-            case 11055: // RIL_UNSOL_ON_SS:
+            case RIL_UNSOL_ON_SS:
                 p.setDataPosition(dataPosition);
                 p.writeInt(RIL_UNSOL_ON_SS);
                 // Do not break
