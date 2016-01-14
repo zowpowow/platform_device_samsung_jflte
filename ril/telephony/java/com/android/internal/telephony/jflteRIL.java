@@ -325,15 +325,8 @@ public class jflteRIL extends RIL implements CommandsInterface {
                     Rlog.e(RILJ_LOG_TAG, "am " + amString + " could not be executed.");
                 }
                 break;
-            case 11021: // RIL_UNSOL_RESPONSE_HANDOVER:
-                ret = responseVoid(p);
-                break;
             case 1036:
                 ret = responseVoid(p);
-                break;
-            case 11017: // RIL_UNSOL_WB_AMR_STATE:
-                ret = responseInts(p);
-                setWbAmr(((int[])ret)[0]);
                 break;
             case 11055: // RIL_UNSOL_ON_SS:
                 p.setDataPosition(dataPosition);
