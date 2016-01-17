@@ -14,6 +14,8 @@ AOSP device configuration for **unified variants**:
 - *SCH-R970*
 - *SGH-I337*
 - *SGH-M919*
+- *SGH-S970*
+- *SM-S975*
 - *SPH-L720*
 
 Base code by **The CyanogenMod Project** - Copyright (c) 2013-2015
