@@ -185,10 +185,6 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libstagefrighthw
 
-# Power
-PRODUCT_PACKAGES += \
-    power.msm8960
-
 # Qualcomm
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
