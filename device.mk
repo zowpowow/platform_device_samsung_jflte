@@ -260,7 +260,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.omh.enabled=1 \
     persist.radio.add_power_save=1 \
     persist.radio.fill_eons=1 \
-    persist.radio.use_se_table_only=1
+    persist.radio.use_se_table_only=1 \
+    ro.ril.telephony.mqanelements=4
 
 # gps
 PRODUCT_PROPERTY_OVERRIDES += \
