@@ -174,15 +174,16 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
     libdivxdrmdecrypt \
-    libOmxCore \
+    libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
+    libOmxCore \
     libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libstagefrighthw \
     libOmxVenc \
     libOmxVdec \
+    libOmxQcelp13Enc \
     libstagefrighthw
 
 # Qualcomm
